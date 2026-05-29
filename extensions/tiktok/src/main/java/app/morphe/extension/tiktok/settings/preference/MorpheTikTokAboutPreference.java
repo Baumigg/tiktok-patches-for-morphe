@@ -18,7 +18,7 @@ public class MorpheTikTokAboutPreference extends Preference {
         super(context);
 
         setTitle("Support my work");
-        setSummary("If you are using these patches, supporting the project helps me keep testing, improving, and maintaining them.");
+        setSummary("If you enjoy these patches, I would really appreciate the support. It helps me keep testing and improving them.");
 
         setOnPreferenceClickListener(pref -> {
             app.morphe.extension.shared.Utils.openLink("https://ko-fi.com/P5P5YOUU7");
