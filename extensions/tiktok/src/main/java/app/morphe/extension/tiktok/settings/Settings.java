@@ -24,6 +24,7 @@ public class Settings extends BaseSettings {
     public static final StringSetting DOWNLOAD_PATH = new StringSetting("down_path", "DCIM/TikTok");
     public static final BooleanSetting DOWNLOAD_WATERMARK = new BooleanSetting("down_watermark", TRUE);
     public static final BooleanSetting CLEAR_DISPLAY = new BooleanSetting("clear_display", FALSE);
+    public static final BooleanSetting COPY_COMMENTS_WITHOUT_USERNAME = new BooleanSetting("copy_comments_without_username", TRUE);
     public static final FloatSetting REMEMBERED_SPEED = new FloatSetting("REMEMBERED_SPEED", 1.0f);
     public static final BooleanSetting SIM_SPOOF = new BooleanSetting("simspoof", FALSE, true);
     public static final StringSetting SIM_SPOOF_ISO = new StringSetting("simspoof_iso", "us");

@@ -43,6 +43,7 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 - `Remember clear display`: Keeps the clear-display state across videos.
 - `SIM spoof`: Spoofs SIM-related values used by TikTok region logic, with popular country/operator presets for easier setup. TikTok may still use other region signals such as IP, account history, and language.
 - `Sanitize sharing links`: Cleans TikTok share links before they leave the app.
+- `Copy comments without username`: Copies only the comment text when using TikTok's copy comment action.
 - `Show seekbar`: Shows the video seekbar where TikTok would normally hide it.
 
 <br>
@@ -70,7 +71,6 @@ You can also copy this repository URL and paste it into Morphe's add source fiel
 
 - [ ] Remove create button
 - [ ] Remove Tako AI
-- [ ] Copy comments without the original commenter's username
 - [ ] Feed tab navigation toggles for Friends, Explore, Following, and For You
 
 <br>

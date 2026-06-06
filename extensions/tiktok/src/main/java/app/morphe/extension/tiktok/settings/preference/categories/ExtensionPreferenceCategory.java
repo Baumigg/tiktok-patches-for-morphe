@@ -13,6 +13,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ClearLogBufferPreference;
 import app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference;
 import app.morphe.extension.tiktok.Utils;
+import app.morphe.extension.tiktok.settings.Settings;
 import app.morphe.extension.tiktok.settings.preference.MorpheTikTokAboutPreference;
 import app.morphe.extension.tiktok.settings.preference.TogglePreference;
 
@@ -37,6 +38,13 @@ public class ExtensionPreferenceCategory extends ConditionalPreferenceCategory {
                 "Sanitize sharing links",
                 "Remove tracking parameters from shared links.",
                 BaseSettings.SANITIZE_SHARING_LINKS
+        ));
+
+        addPreference(new TogglePreference(
+                context,
+                "Copy comments without username",
+                "Copy only the comment text when using TikTok's copy comment action.",
+                Settings.COPY_COMMENTS_WITHOUT_USERNAME
         ));
 
         addPreference(new TogglePreference(
