@@ -34,7 +34,8 @@ public class DownloadsPreferenceCategory extends ConditionalPreferenceCategory {
         ));
         addPreference(new TogglePreference(
                 context,
-                "Remove watermark", "",
+                "Remove watermark",
+                "Apply to video downloads and image downloads.",
                 Settings.DOWNLOAD_WATERMARK
         ));
     }

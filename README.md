@@ -38,7 +38,10 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 - `Disable login requirement`: Lets supported TikTok flows load without the normal login wall first.
 - `Fix Google login`: Restores Google sign-in behavior after patching.
 - `Feed filter`: Filters feed items such as ads, livestreams, stories, shop content, image videos, and videos outside configured view or like ranges.
-- `Downloads`: Downloads videos without watermark and adds download-related controls.
+- `Downloads`: Adds download-related controls.
+  - Downloads videos without watermark.
+  - Downloads images without watermark.
+  - Saves comment stickers/images to the device gallery.
 - `Playback speed`: Adds playback speed controls.
 - `Remember clear display`: Keeps the clear-display state across videos.
 - `SIM spoof`: Spoofs SIM-related values used by TikTok region logic, with popular country/operator presets for easier setup. TikTok may still use other region signals such as IP, account history, and language.

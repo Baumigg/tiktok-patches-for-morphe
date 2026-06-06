@@ -23,11 +23,12 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/tiktok/download/DownloadsPatch;"
+private const val STICKER_EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/tiktok/download/StickerGallerySaver;"
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
     name = "Downloads",
-    description = "Downloads videos without watermark and adds download-related controls. (Supports TikTok 43.8.3.)",
+    description = "Downloads videos and images without watermark, saves comment stickers/images, and adds download-related controls. (Supports TikTok 43.8.3.)",
     default = true,
 ) {
     dependsOn(sharedExtensionPatch)
@@ -69,6 +70,7 @@ val downloadsPatch = bytecodePatch(
             )
         }
 
+        // Download images without TikTok's drawn watermark.
         CommentImageWatermarkFingerprint.method.apply {
             val drawBitmapIndex = findInstructionIndicesReversedOrThrow {
                 opcode.name == "invoke-virtual" &&
@@ -98,6 +100,17 @@ val downloadsPatch = bytecodePatch(
 
                     :skip_watermark
                     nop
+                """,
+            )
+        }
+
+        // Add local gallery saving to the comment sticker/image preview sheet.
+        StickerPreviewBinderFingerprint.method.apply {
+            val returnIndex = findInstructionIndicesReversedOrThrow { opcode == Opcode.RETURN_VOID }.first()
+            addInstructions(
+                returnIndex,
+                """
+                    invoke-static/range {p0 .. p1}, $STICKER_EXTENSION_CLASS_DESCRIPTOR->attachSaveImageButton(Landroid/view/View;Ljava/lang/Object;)V
                 """,
             )
         }

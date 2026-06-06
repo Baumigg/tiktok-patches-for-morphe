@@ -5,7 +5,10 @@
 package app.morphe.patches.tiktok.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object AclCommonShareFingerprint : Fingerprint(
     definingClass = "/ACLCommonShare;",
@@ -49,5 +52,55 @@ internal object CommentImageWatermarkFingerprint : Fingerprint(
     strings = listOf("[tiktok_logo]", "image/jpeg", "is_pending"),
     parameters = listOf("Landroid/graphics/Bitmap;"),
     returnType = "V",
+)
+
+internal object StickerPreviewBinderFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Z",
+        "Ljava/lang/String;",
+        "Ljava/util/Map;",
+    ),
+    custom = { method, classDef ->
+        if (!classDef.endsWith("/05No;") || method.name != "LIZ") {
+            false
+        } else {
+            val instructions = method.implementation?.instructions
+            if (instructions == null) {
+                false
+            } else {
+                var readsUrlModel = false
+                var bindsActionButton = false
+                var loadsStickerImage = false
+
+                instructions.forEach { instruction ->
+                    instruction.getReference<FieldReference>()?.let { field ->
+                        if (field.type == "Lcom/ss/android/ugc/aweme/base/model/UrlModel;") {
+                            readsUrlModel = true
+                        }
+                    }
+
+                    instruction.getReference<MethodReference>()?.let { methodReference ->
+                        if (methodReference.definingClass == "LX/05No;" &&
+                            methodReference.name == "LIZIZ" &&
+                            methodReference.parameterTypes == listOf("LX/0Daq;", "LX/05Nn;") &&
+                            methodReference.returnType == "V"
+                        ) {
+                            bindsActionButton = true
+                        }
+
+                        if (methodReference.definingClass == "LX/0zaJ;" &&
+                            methodReference.name == "LIZJ"
+                        ) {
+                            loadsStickerImage = true
+                        }
+                    }
+                }
+
+                readsUrlModel && bindsActionButton && loadsStickerImage
+            }
+        }
+    },
 )
 
