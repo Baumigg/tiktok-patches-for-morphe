@@ -65,12 +65,27 @@ public class TikTokPreferenceFragment extends AbstractPreferenceFragment {
             @NonNull Setting setting,
             boolean applySettingToPreference
     ) {
-        if (pref instanceof RangeValuePreference) {
+        if (pref instanceof NumberInputPreference) {
+            NumberInputPreference numberInputPreference = (NumberInputPreference) pref;
+            if (applySettingToPreference) {
+                numberInputPreference.setValue(setting.get().toString());
+            } else {
+                Setting.privateSetValueFromString(setting, numberInputPreference.getValue());
+            }
+        } else if (pref instanceof RangeValuePreference) {
             RangeValuePreference rangeValuePref = (RangeValuePreference) pref;
-            Setting.privateSetValueFromString(setting, rangeValuePref.getValue());
+            if (applySettingToPreference) {
+                rangeValuePref.setValue(setting.get().toString());
+            } else {
+                Setting.privateSetValueFromString(setting, rangeValuePref.getValue());
+            }
         } else if (pref instanceof DownloadPathPreference) {
             DownloadPathPreference downloadPathPref = (DownloadPathPreference) pref;
-            Setting.privateSetValueFromString(setting, downloadPathPref.getValue());
+            if (applySettingToPreference) {
+                downloadPathPref.setValue(setting.get().toString());
+            } else {
+                Setting.privateSetValueFromString(setting, downloadPathPref.getValue());
+            }
         } else if (pref instanceof TabSelectionPreference) {
             TabSelectionPreference tabSelectionPref = (TabSelectionPreference) pref;
             if (applySettingToPreference) {
@@ -81,6 +96,25 @@ public class TikTokPreferenceFragment extends AbstractPreferenceFragment {
         } else {
             super.syncSettingWithPreference(pref, setting, applySettingToPreference);
         }
+    }
+
+    @Override
+    protected boolean prefIsSetToDefault(Preference pref, Setting<?> setting) {
+        String defaultValue = setting.defaultValue.toString();
+        if (pref instanceof NumberInputPreference) {
+            return defaultValue.equals(((NumberInputPreference) pref).getValue());
+        }
+        if (pref instanceof RangeValuePreference) {
+            return defaultValue.equals(((RangeValuePreference) pref).getValue());
+        }
+        if (pref instanceof DownloadPathPreference) {
+            return defaultValue.equals(((DownloadPathPreference) pref).getValue());
+        }
+        if (pref instanceof TabSelectionPreference) {
+            return defaultValue.equals(((TabSelectionPreference) pref).getValue());
+        }
+
+        return super.prefIsSetToDefault(pref, setting);
     }
 
     @Override

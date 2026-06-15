@@ -45,11 +45,13 @@ public class DownloadPathPreference extends DialogPreference {
     }
 
     public void setValue(String value) {
-        final boolean changed = !TextUtils.equals(mValue, value);
+        String normalizedValue = normalizePath(value);
+        setSummary(Environment.getExternalStorageDirectory().getPath() + "/" + normalizedValue);
+        final boolean changed = !TextUtils.equals(mValue, normalizedValue);
         if (changed || !mValueSet) {
-            mValue = value;
+            mValue = normalizedValue;
             mValueSet = true;
-            persistString(value);
+            persistString(normalizedValue);
             if (changed) {
                 notifyDependencyChange(shouldDisableDependents());
                 notifyChanged();
@@ -59,7 +61,6 @@ public class DownloadPathPreference extends DialogPreference {
 
     public void applyPickedPath(String path) {
         String newValue = normalizePath(path);
-        setSummary(Environment.getExternalStorageDirectory().getPath() + "/" + newValue);
         setValue(newValue);
         app.morphe.extension.shared.Utils.showToastShort("Download path updated");
     }
@@ -142,7 +143,6 @@ public class DownloadPathPreference extends DialogPreference {
     protected void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
             String newValue = normalizePath(downloadPathValue);
-            setSummary(Environment.getExternalStorageDirectory().getPath() + "/" + newValue);
             setValue(newValue);
         }
     }

@@ -11,6 +11,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.tiktok.settings.Settings;
 import app.morphe.extension.tiktok.settings.SettingsStatus;
 import app.morphe.extension.tiktok.settings.preference.DownloadPathPreference;
+import app.morphe.extension.tiktok.settings.preference.NumberInputPreference;
 import app.morphe.extension.tiktok.settings.preference.TogglePreference;
 
 @SuppressWarnings("deprecation")
@@ -38,6 +39,21 @@ public class DownloadsPreferenceCategory extends ConditionalPreferenceCategory {
                 "Apply to video downloads and image downloads.",
                 Settings.DOWNLOAD_WATERMARK
         ));
+        addPreference(new TogglePreference(
+                context,
+                "Custom offline videos",
+                "Adds a custom option to TikTok's offline videos menu after restart.",
+                Settings.CUSTOM_OFFLINE_VIDEOS
+        ));
+        addPreference(new NumberInputPreference(
+                context,
+                "Offline videos limit",
+                "Choose 201-500 videos. Restart TikTok after saving.",
+                Settings.CUSTOM_OFFLINE_VIDEO_LIMIT,
+                201,
+                500
+        ));
+
     }
 }
 
