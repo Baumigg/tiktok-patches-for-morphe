@@ -38,20 +38,19 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 - `Disable login requirement`: Lets supported TikTok flows load without the normal login wall first.
 - `Fix Google login`: Restores Google sign-in behavior after patching.
 - `Feed filter`: Filters feed items such as ads, livestreams, stories, shop content, image videos, and videos outside configured view or like ranges.
-- `Feed tab navigation`: Adds controls for choosing which loaded top feed tabs stay visible, with an option to block tabs TikTok adds later.
+- `Feed tab navigation`: Adds controls for choosing which loaded top and bottom feed tabs stay visible, with an option to block tabs TikTok adds later.
 - `Downloads`: Adds download-related controls.
   - Downloads videos without watermark.
   - Downloads images without watermark.
-  - Saves comment stickers/images to the device gallery.
+  - Saves comment sticker videos/images to the device gallery.
   - Lets you choose a relative internal-storage download folder with a simple browse helper.
   - Adds an optional custom offline video limit entry, configurable up to 500 videos.
-- `Follow diagnostics`: Adds debug-only logging around TikTok follow requests for users whose follow actions reset or do not persist after refreshing. Enable this only when reproducing that issue and sharing logs for debugging.
 - `Playback speed`: Adds playback speed controls.
 - `Remember clear display`: Keeps the clear-display state across videos.
 - `SIM spoof`: Spoofs SIM-related values used by TikTok region logic, with popular country/operator presets for easier setup. TikTok may still use other region signals such as IP, account history, and language.
 - `Sanitize sharing links`: Cleans TikTok share links before they leave the app.
 - `Copy comments without username`: Copies only the comment text when using TikTok's copy comment action.
-- `Translate comments`: Automatically translates loaded and expanded comment batches using TikTok's translation system, while skipping comments that already match the device language when TikTok exposes that language clearly.
+- `Auto Translate comments`: Automatically translates loaded and expanded comment batches using TikTok's translation system, while skipping comments that already match the device language when TikTok exposes that language clearly.
 - `Show seekbar`: Shows the video seekbar where TikTok would normally hide it.
 
 <br>
