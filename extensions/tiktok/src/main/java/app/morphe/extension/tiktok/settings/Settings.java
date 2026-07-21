@@ -70,7 +70,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting CUSTOM_OFFLINE_VIDEOS = new BooleanSetting("custom_offline_videos", FALSE, true);
     public static final IntegerSetting CUSTOM_OFFLINE_VIDEO_LIMIT = new IntegerSetting(
             "custom_offline_video_limit",
-            500,
+            10000,
             true,
             Setting.parent(CUSTOM_OFFLINE_VIDEOS)
     );
