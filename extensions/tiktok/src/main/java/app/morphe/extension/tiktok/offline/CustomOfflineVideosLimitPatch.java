@@ -9,7 +9,7 @@ import app.morphe.extension.tiktok.settings.Settings;
 @SuppressWarnings("unused")
 public final class CustomOfflineVideosLimitPatch {
     private static final int MIN_LIMIT = 201;
-    private static final int MAX_LIMIT = 500;
+    private static final int MAX_LIMIT = 10000;
     private static final int STORAGE_MB_PER_VIDEO = 2;
     private static final double WATCH_MINUTES_PER_VIDEO = 0.6;
 
