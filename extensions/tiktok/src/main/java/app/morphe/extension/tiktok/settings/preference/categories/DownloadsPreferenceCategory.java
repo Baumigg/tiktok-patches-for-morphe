@@ -48,7 +48,7 @@ public class DownloadsPreferenceCategory extends ConditionalPreferenceCategory {
         addPreference(new NumberInputPreference(
                 context,
                 "Offline videos limit",
-                "Choose 201-500 videos. Restart TikTok after saving.",
+                "Choose 201-10000 videos. Restart TikTok after saving.",
                 Settings.CUSTOM_OFFLINE_VIDEO_LIMIT,
                 201,
                 10000
