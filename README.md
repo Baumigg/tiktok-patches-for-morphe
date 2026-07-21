@@ -57,11 +57,7 @@ The goal is to keep the existing patch set usable while adding more TikTok-focus
 
 ## Add Source
 
-Open this link on the Android device where Morphe is installed:
-
-[Add TikTok Patches for Morphe](https://morphe.software/add-source?github=icysymmetra/tiktok-patches-for-morphe)
-
-You can also copy this repository URL and paste it into Morphe's add source field:
+You can copy this repository URL and paste it into Morphe's add source field:
 
 [https://github.com/Baumigg/tiktok-patches-for-morphe/tree/main](https://github.com/Baumigg/tiktok-patches-for-morphe/tree/main)
 
