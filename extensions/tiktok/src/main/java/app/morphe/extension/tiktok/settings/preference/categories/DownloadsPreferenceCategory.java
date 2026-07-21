@@ -51,7 +51,7 @@ public class DownloadsPreferenceCategory extends ConditionalPreferenceCategory {
                 "Choose 201-500 videos. Restart TikTok after saving.",
                 Settings.CUSTOM_OFFLINE_VIDEO_LIMIT,
                 201,
-                500
+                10000
         ));
 
     }
