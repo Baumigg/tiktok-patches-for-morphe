@@ -63,7 +63,7 @@ Open this link on the Android device where Morphe is installed:
 
 You can also copy this repository URL and paste it into Morphe's add source field:
 
-[https://github.com/icysymmetra/tiktok-patches-for-morphe](https://github.com/icysymmetra/tiktok-patches-for-morphe)
+[https://github.com/Baumigg/tiktok-patches-for-morphe/tree/main](https://github.com/Baumigg/tiktok-patches-for-morphe/tree/main)
 
 <br>
 
