@@ -15,8 +15,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22c
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val CUSTOM_OFFLINE_VIDEO_LIMIT = 500
-private const val CUSTOM_OFFLINE_VIDEO_LIMIT_SMALI = "0x1f4"
+private const val CUSTOM_OFFLINE_VIDEO_LIMIT = 10000
+private const val CUSTOM_OFFLINE_VIDEO_LIMIT_SMALI = "0x2710"
 private const val CUSTOM_OFFLINE_VIDEOS_HELPER =
     "Lapp/morphe/extension/tiktok/offline/CustomOfflineVideosLimitPatch;"
 
